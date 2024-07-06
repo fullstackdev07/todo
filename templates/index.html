@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+99dFkza2gK13q+0wKt9Jly5+XFRmfw3HyZ0L7hO2tZ5hV+" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-b4AiqxmB9JBqFOsTG9FfmDJdwpF6eRbP5hVraB4vVJJ7T/8fo0GvG2yBbJgG6Pkd" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>TodoApp</h2>
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" id="contact" name="contact" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+        <div class="container mt-3">         
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>SNO</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in alltodo %}
+                <tr>
+                  <td>{{loop.index}}</td>
+                  <td>{{i.name}}</td>
+                  <td>{{i.description}}</td>
+                  <td>{{i.contact}}</td>
+                  <td>
+                    <a href="/update/{{i.id}}" type="submit" class="btn btn-primary mr-2">Update</button>
+                    <a href="/delete/{{i.id}}" type="button" class="btn btn-dark">Delete</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            
+            </table>
+    </div>
+  </body>
+</html>
